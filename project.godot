@@ -74,7 +74,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Super Tux Party"
+config/name="HackathonGame"
 run/main_scene="res://client/menus/main_menu.tscn"
 config/project_settings_override="user://render_settings.godot"
 config/icon="res://assets/icons/icon-smallest.png"
