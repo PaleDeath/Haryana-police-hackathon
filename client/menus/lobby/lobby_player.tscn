@@ -1,0 +1,51 @@
+[gd_scene format=2]
+
+[node name="LobbyPlayer" type="VBoxContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 314.0
+margin_bottom = 142.0
+size_flags_vertical = 7
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 372.0
+margin_bottom = 156.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 358.0
+margin_bottom = 142.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="Button" parent="PanelContainer/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+expand_icon = true
+
+[node name="Name" type="LineEdit" parent="PanelContainer/HBoxContainer"]
+margin_left = 136.0
+margin_right = 300.0
+margin_bottom = 128.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+text = "<NAME>"
+
+[node name="Remove" type="Button" parent="PanelContainer/HBoxContainer"]
+margin_left = 308.0
+margin_right = 344.0
+margin_bottom = 128.0
+text = "x"

@@ -1,0 +1,434 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/defaults/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/fonts/button_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://client/menus/options_menu.gd" type="Script" id=3]
+[ext_resource path="res://common/scenes/sound_button/sound_button.gd" type="Script" id=4]
+[ext_resource path="res://common/scenes/sound_button/option_button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://client/menus/options_menu_tab_container.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/button_font_small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://common/scenes/sound_button/sound_button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://common/scenes/sound_button/check_box.tscn" type="PackedScene" id=9]
+[ext_resource path="res://client/menus/control_remapping/player_controls_mapper.tscn" type="PackedScene" id=10]
+[ext_resource path="res://common/scenes/sound_button/check_button.tscn" type="PackedScene" id=11]
+[ext_resource path="res://client/menus/control_remapping/control_remap_button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://common/scenes/sound_button/hslider.tscn" type="PackedScene" id=13]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="OptionsMenu" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 265.0
+margin_top = 197.0
+margin_right = 1015.0
+margin_bottom = 522.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 750, 0 )
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Menu"]
+margin_right = 750.0
+margin_bottom = 290.0
+custom_fonts/font = ExtResource( 2 )
+tab_align = 0
+script = ExtResource( 6 )
+
+[node name="Visual" type="VBoxContainer" parent="Menu/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 47.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="Language" type="HBoxContainer" parent="Menu/TabContainer/Visual"]
+margin_right = 734.0
+margin_bottom = 29.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Visual/Language"]
+margin_right = 509.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "MENU_OPTIONS_LANGUAGE"
+
+[node name="OptionButton" parent="Menu/TabContainer/Visual/Language" instance=ExtResource( 5 )]
+margin_left = 513.0
+margin_right = 734.0
+margin_bottom = 29.0
+focus_neighbour_bottom = NodePath("../../Fullscreen")
+focus_next = NodePath("../../Fullscreen")
+custom_fonts/font = ExtResource( 7 )
+text = "MENU_OPTIONS_SYSTEM_DEFAULT"
+items = [ "MENU_OPTIONS_SYSTEM_DEFAULT", null, false, 0, null ]
+selected = 0
+
+[node name="Fullscreen" parent="Menu/TabContainer/Visual" instance=ExtResource( 11 )]
+margin_top = 33.0
+margin_right = 734.0
+margin_bottom = 64.0
+focus_neighbour_top = NodePath("../Language/OptionButton")
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_OPTIONS_FULLSCREEN"
+flat = true
+
+[node name="VSync" parent="Menu/TabContainer/Visual" instance=ExtResource( 11 )]
+margin_top = 68.0
+margin_right = 734.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_OPTIONS_VSYNC"
+flat = true
+
+[node name="FXAA" parent="Menu/TabContainer/Visual" instance=ExtResource( 11 )]
+margin_top = 103.0
+margin_right = 734.0
+margin_bottom = 134.0
+text = "MENU_OPTIONS_FXAA"
+flat = true
+
+[node name="MSAA" type="HBoxContainer" parent="Menu/TabContainer/Visual"]
+margin_top = 138.0
+margin_right = 734.0
+margin_bottom = 167.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Visual/MSAA"]
+margin_right = 698.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_OPTIONS_MSAA"
+
+[node name="OptionButton" parent="Menu/TabContainer/Visual/MSAA" instance=ExtResource( 5 )]
+margin_left = 702.0
+margin_right = 734.0
+margin_bottom = 29.0
+focus_neighbour_top = NodePath("../../VSync")
+focus_previous = NodePath("../../VSync")
+custom_fonts/font = ExtResource( 7 )
+text = "Off"
+items = [ "Off", null, false, 0, null, "2x MSAA", null, false, 1, null, "4x MSAA", null, false, 2, null, "8x MSAA", null, false, 3, null, "16x MSAA", null, false, 4, null ]
+selected = 0
+
+[node name="FrameCap" type="HBoxContainer" parent="Menu/TabContainer/Visual"]
+margin_top = 171.0
+margin_right = 734.0
+margin_bottom = 200.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Visual/FrameCap"]
+margin_right = 700.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "MENU_OPTIONS_FRAME_CAP"
+
+[node name="OptionButton" parent="Menu/TabContainer/Visual/FrameCap" instance=ExtResource( 5 )]
+margin_left = 704.0
+margin_right = 734.0
+margin_bottom = 29.0
+focus_neighbour_top = NodePath("../../VSync")
+focus_previous = NodePath("../../VSync")
+custom_fonts/font = ExtResource( 7 )
+text = "60"
+items = [ "30", null, false, 0, null, "60", null, false, 1, null, "120", null, false, 2, null, "144", null, false, 3, null, "240", null, false, 4, null, "∞", null, false, 5, null ]
+selected = 1
+
+[node name="Quality" type="HBoxContainer" parent="Menu/TabContainer/Visual"]
+margin_top = 204.0
+margin_right = 734.0
+margin_bottom = 235.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Visual/Quality"]
+margin_top = 1.0
+margin_right = 339.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "MENU_OPTIONS_GRAPHIC_QUALITY"
+
+[node name="OptionButton" type="OptionButton" parent="Menu/TabContainer/Visual/Quality"]
+margin_left = 343.0
+margin_right = 734.0
+margin_bottom = 31.0
+text = "MENU_OPTIONS_GRAPHIC_QUALITY_HIGH"
+items = [ "MENU_OPTIONS_GRAPHIC_QUALITY_HIGH", null, false, 0, null, "MENU_OPTIONS_GRAPHIC_QUALITY_MEDIUM", null, false, 1, null, "MENU_OPTIONS_GRAPHIC_QUALITY_LOW", null, false, 2, null ]
+selected = 0
+script = ExtResource( 4 )
+
+[node name="Audio" type="VBoxContainer" parent="Menu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 47.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="Master" type="HBoxContainer" parent="Menu/TabContainer/Audio"]
+margin_right = 734.0
+margin_bottom = 31.0
+
+[node name="CheckBox" parent="Menu/TabContainer/Audio/Master" instance=ExtResource( 9 )]
+margin_right = 257.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+text = "MENU_OPTIONS_MASTER"
+flat = true
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Audio/Master"]
+margin_left = 261.0
+margin_top = 1.0
+margin_right = 734.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+align = 2
+
+[node name="MasterVolume" parent="Menu/TabContainer/Audio" instance=ExtResource( 13 )]
+margin_top = 35.0
+margin_right = 734.0
+margin_bottom = 51.0
+min_value = -80.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="MuteUnfocus" parent="Menu/TabContainer/Audio" instance=ExtResource( 11 )]
+margin_top = 55.0
+margin_right = 734.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+text = "MENU_OPTIONS_MUTE_ON_WINDOW_UNFOCUS"
+flat = true
+
+[node name="Music" type="HBoxContainer" parent="Menu/TabContainer/Audio"]
+margin_top = 90.0
+margin_right = 734.0
+margin_bottom = 121.0
+
+[node name="CheckBox" parent="Menu/TabContainer/Audio/Music" instance=ExtResource( 9 )]
+margin_right = 244.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+text = "MENU_OPTIONS_MUSIC"
+flat = true
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Audio/Music"]
+margin_left = 248.0
+margin_top = 1.0
+margin_right = 734.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+align = 2
+
+[node name="MusicVolume" parent="Menu/TabContainer/Audio" instance=ExtResource( 13 )]
+margin_top = 125.0
+margin_right = 734.0
+margin_bottom = 141.0
+min_value = -80.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="Effects" type="HBoxContainer" parent="Menu/TabContainer/Audio"]
+margin_top = 145.0
+margin_right = 734.0
+margin_bottom = 176.0
+
+[node name="CheckBox" parent="Menu/TabContainer/Audio/Effects" instance=ExtResource( 9 )]
+margin_right = 259.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+text = "MENU_OPTIONS_EFFECTS"
+flat = true
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Audio/Effects"]
+margin_left = 263.0
+margin_top = 1.0
+margin_right = 734.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+align = 2
+
+[node name="EffectsVolume" parent="Menu/TabContainer/Audio" instance=ExtResource( 13 )]
+margin_top = 180.0
+margin_right = 734.0
+margin_bottom = 196.0
+min_value = -80.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="Controls" type="VBoxContainer" parent="Menu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 47.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="Player1" parent="Menu/TabContainer/Controls" instance=ExtResource( 8 )]
+margin_right = 734.0
+margin_bottom = 31.0
+text = "MENU_LABEL_PLAYER1"
+
+[node name="Player2" parent="Menu/TabContainer/Controls" instance=ExtResource( 8 )]
+margin_top = 35.0
+margin_right = 734.0
+margin_bottom = 66.0
+text = "MENU_LABEL_PLAYER2"
+
+[node name="Player3" parent="Menu/TabContainer/Controls" instance=ExtResource( 8 )]
+margin_top = 70.0
+margin_right = 734.0
+margin_bottom = 101.0
+text = "MENU_LABEL_PLAYER3"
+
+[node name="Player4" parent="Menu/TabContainer/Controls" instance=ExtResource( 8 )]
+margin_top = 105.0
+margin_right = 734.0
+margin_bottom = 136.0
+text = "MENU_LABEL_PLAYER4"
+
+[node name="screenshot" type="HBoxContainer" parent="Menu/TabContainer/Controls"]
+margin_top = 140.0
+margin_right = 734.0
+margin_bottom = 171.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Controls/screenshot"]
+margin_top = 1.0
+margin_right = 701.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "MENU_CONTROLS_SCREENSHOT"
+
+[node name="Button" parent="Menu/TabContainer/Controls/screenshot" instance=ExtResource( 12 )]
+margin_left = 705.0
+margin_right = 734.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 29, 0 )
+action = "screenshot"
+
+[node name="debug" type="HBoxContainer" parent="Menu/TabContainer/Controls"]
+margin_top = 175.0
+margin_right = 734.0
+margin_bottom = 206.0
+
+[node name="Label" type="Label" parent="Menu/TabContainer/Controls/debug"]
+margin_top = 1.0
+margin_right = 701.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+text = "MENU_CONTROLS_DEV_MENU"
+
+[node name="Button" parent="Menu/TabContainer/Controls/debug" instance=ExtResource( 12 )]
+margin_left = 705.0
+margin_right = 734.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 29, 0 )
+action = "debug"
+
+[node name="Misc" type="VBoxContainer" parent="Menu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 47.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="PauseUnfocus" parent="Menu/TabContainer/Misc" instance=ExtResource( 11 )]
+margin_right = 734.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 2 )
+pressed = true
+text = "MENU_LABEL_PAUSE_ON_WINDOW_UNFOCUS"
+flat = true
+
+[node name="Credits" type="VBoxContainer" parent="Menu/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 47.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/TabContainer/Credits"]
+margin_right = 734.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 734, 360 )
+bbcode_enabled = true
+
+[node name="Back" parent="Menu" instance=ExtResource( 8 )]
+margin_top = 294.0
+margin_right = 750.0
+margin_bottom = 325.0
+custom_fonts/font = ExtResource( 2 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
+text = "MENU_LABEL_BACK"
+custom_click = "res://assets/sounds/ui/click2.wav"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Menu"]
+margin_right = 127.0
+margin_bottom = 86.0
+window_title = "Warnung!"
+
+[node name="ControlRemapper" parent="." instance=ExtResource( 10 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 265.0
+margin_top = 318.0
+margin_right = 1015.0
+margin_bottom = 401.0
+
+[connection signal="tab_selected" from="Menu/TabContainer" to="." method="_on_TabContainer_tab_selected"]
+[connection signal="item_selected" from="Menu/TabContainer/Visual/Language/OptionButton" to="." method="_on_Language_item_selected"]
+[connection signal="toggled" from="Menu/TabContainer/Visual/Fullscreen" to="." method="_on_Fullscreen_toggled"]
+[connection signal="toggled" from="Menu/TabContainer/Visual/VSync" to="." method="_on_VSync_toggled"]
+[connection signal="toggled" from="Menu/TabContainer/Visual/FXAA" to="." method="_on_FXAA_toggled"]
+[connection signal="item_selected" from="Menu/TabContainer/Visual/MSAA/OptionButton" to="." method="_on_MSAA_item_selected"]
+[connection signal="item_selected" from="Menu/TabContainer/Visual/FrameCap/OptionButton" to="." method="_on_FrameCap_item_selected"]
+[connection signal="button_down" from="Menu/TabContainer/Visual/Quality/OptionButton" to="Menu/TabContainer/Visual/Quality/OptionButton" method="_cancel_sound"]
+[connection signal="item_focused" from="Menu/TabContainer/Visual/Quality/OptionButton" to="Menu/TabContainer/Visual/Quality/OptionButton" method="_select_with_arg"]
+[connection signal="item_selected" from="Menu/TabContainer/Visual/Quality/OptionButton" to="." method="_on_GraphicQuality_item_selected"]
+[connection signal="item_selected" from="Menu/TabContainer/Visual/Quality/OptionButton" to="Menu/TabContainer/Visual/Quality/OptionButton" method="_click_with_arg"]
+[connection signal="pressed" from="Menu/TabContainer/Visual/Quality/OptionButton" to="Menu/TabContainer/Visual/Quality/OptionButton" method="_click"]
+[connection signal="toggled" from="Menu/TabContainer/Audio/Master/CheckBox" to="." method="_on_bus_toggled" binds= [ 0 ]]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/MasterVolume" to="." method="_on_volume_changed" binds= [ 0 ]]
+[connection signal="toggled" from="Menu/TabContainer/Audio/MuteUnfocus" to="." method="_on_MuteUnfocus_toggled"]
+[connection signal="toggled" from="Menu/TabContainer/Audio/Music/CheckBox" to="." method="_on_bus_toggled" binds= [ 1 ]]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/MusicVolume" to="." method="_on_volume_changed" binds= [ 1 ]]
+[connection signal="toggled" from="Menu/TabContainer/Audio/Effects/CheckBox" to="." method="_on_bus_toggled" binds= [ 2 ]]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/EffectsVolume" to="." method="_on_volume_changed" binds= [ 2 ]]
+[connection signal="pressed" from="Menu/TabContainer/Controls/Player1" to="." method="_on_change_controls_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Menu/TabContainer/Controls/Player2" to="." method="_on_change_controls_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Menu/TabContainer/Controls/Player3" to="." method="_on_change_controls_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="Menu/TabContainer/Controls/Player4" to="." method="_on_change_controls_pressed" binds= [ 4 ]]
+[connection signal="toggled" from="Menu/TabContainer/Misc/PauseUnfocus" to="." method="_on_PauseUnfocus_toggled"]
+[connection signal="pressed" from="Menu/Back" to="." method="emit_signal" binds= [ "quit" ]]
+[connection signal="quit" from="ControlRemapper" to="." method="_on_ControlRemapper_quit"]

@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/defaults/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://client/menus/lobby/lobby_menu.gd" type="Script" id=2]
+[ext_resource path="res://client/menus/lobby/character_menu.tscn" type="PackedScene" id=3]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[node name="LobbyMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 1240.0
+margin_bottom = 645.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content"]
+margin_right = 300.0
+margin_bottom = 645.0
+rect_min_size = Vector2( 300, 0 )
+scroll_horizontal_enabled = false
+
+[node name="Sidebar" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/ScrollContainer"]
+margin_right = 300.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+margin_left = 304.0
+margin_right = 1240.0
+margin_bottom = 645.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
+margin_right = 936.0
+margin_bottom = 29.0
+text = "MENU_LABEL_SELECT_BOARD"
+
+[node name="Board" type="OptionButton" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
+margin_top = 33.0
+margin_right = 936.0
+margin_bottom = 64.0
+
+[node name="Characters" type="GridContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
+margin_top = 68.0
+margin_right = 936.0
+margin_bottom = 645.0
+size_flags_vertical = 3
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Footer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 649.0
+margin_right = 1240.0
+margin_bottom = 680.0
+
+[node name="Leave" type="Button" parent="MarginContainer/VBoxContainer/Footer"]
+margin_right = 180.0
+margin_bottom = 31.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
+text = "MENU_LABEL_BACK"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Footer"]
+margin_left = 184.0
+margin_right = 1051.0
+margin_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Lobby" type="Label" parent="MarginContainer/VBoxContainer/Footer/HBoxContainer"]
+margin_left = 339.0
+margin_top = 1.0
+margin_right = 339.0
+margin_bottom = 30.0
+align = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Footer/HBoxContainer"]
+margin_left = 349.0
+margin_right = 527.0
+margin_bottom = 31.0
+text = "MENU_LABEL_COPY"
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/Footer"]
+margin_left = 1055.0
+margin_right = 1240.0
+margin_bottom = 31.0
+grow_horizontal = 0
+text = "MENU_LABEL_START"
+
+[node name="CharacterMenu" parent="." instance=ExtResource( 3 )]
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/Content/VBoxContainer/Board" to="." method="_on_Board_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/Leave" to="." method="_on_Leave_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/HBoxContainer/Button" to="." method="_on_lobby_code_copy"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/Start" to="." method="_on_Start_pressed"]

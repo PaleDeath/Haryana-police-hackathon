@@ -1,0 +1,213 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/defaults/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://client/menus/main_menu_bg.shader" type="Shader" id=2]
+[ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/icons/cookie-grayscale.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/button_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://client/menus/pause_menu.gd" type="Script" id=6]
+[ext_resource path="res://common/scenes/sound_button/sound_button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://client/menus/options_menu.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.654902, 0.12549, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.654902, 0.12549, 0.12549, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.352941, 0.788235, 0.866667, 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 2 )
+
+[node name="PauseMenu" type="PopupPanel" groups=[
+"pausemenu",
+]]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -300.0
+margin_right = 220.0
+margin_bottom = 300.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+popup_exclusive = true
+script = ExtResource( 6 )
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+margin_left = -51.8
+margin_top = -60.0
+margin_right = 51.8
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Container"]
+margin_right = 518.0
+margin_bottom = 58.0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MENU_LABEL_PAUSED"
+align = 1
+clip_text = true
+
+[node name="Resume" parent="Container" instance=ExtResource( 7 )]
+margin_top = 100.0
+margin_right = 518.0
+margin_bottom = 197.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_LABEL_RESUME"
+clip_text = true
+
+[node name="Options" parent="Container" instance=ExtResource( 7 )]
+margin_top = 201.0
+margin_right = 518.0
+margin_bottom = 297.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_OPTIONS"
+clip_text = true
+
+[node name="SaveGame" parent="Container" instance=ExtResource( 7 )]
+margin_top = 301.0
+margin_right = 518.0
+margin_bottom = 398.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_IO_SAVE_GAME"
+clip_text = true
+
+[node name="ExitMenu" parent="Container" instance=ExtResource( 7 )]
+margin_top = 402.0
+margin_right = 518.0
+margin_bottom = 499.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_LABEL_RETURN_MENU"
+clip_text = true
+
+[node name="ExitDesktop" parent="Container" instance=ExtResource( 7 )]
+margin_top = 503.0
+margin_right = 518.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_LABEL_DESKTOP"
+clip_text = true
+
+[node name="SavegameNameInput" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.0
+margin_top = -300.0
+margin_right = 259.0
+margin_bottom = 300.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 2 )
+window_title = "MENU_IO_SAVE_GAME"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SavegameNameInput"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="Label" type="Label" parent="SavegameNameInput/VBoxContainer"]
+margin_right = 502.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 5 )
+text = "MENU_IO_ENTER_SAVEGAME_NAME"
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="SavegameNameInput/VBoxContainer"]
+margin_top = 33.0
+margin_right = 502.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 5 )
+context_menu_enabled = false
+
+[node name="Button" parent="SavegameNameInput/VBoxContainer" instance=ExtResource( 7 )]
+margin_top = 74.0
+margin_right = 502.0
+margin_bottom = 105.0
+custom_fonts/font = ExtResource( 5 )
+disabled = true
+text = "MENU_IO_SAVE"
+
+[node name="OverrideSave" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.0
+margin_top = -300.0
+margin_right = 259.0
+margin_bottom = 300.0
+window_title = "Bitte bestätigen..."
+dialog_text = "Another save has the same name. Do you want to override it?"
+
+[node name="OptionsWindow" type="PopupPanel" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Control" type="Control" parent="OptionsWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="OptionsWindow/Control"]
+anchor_right = 1.0
+margin_top = 100.0
+margin_right = -15.0
+margin_bottom = 158.0
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_OPTIONS"
+align = 1
+
+[node name="OptionsMenu" parent="OptionsWindow/Control" instance=ExtResource( 8 )]
+
+[node name="Background" type="TextureRect" parent="OptionsWindow/Control"]
+self_modulate = Color( 0.184314, 0.729412, 0.85098, 1 )
+show_behind_parent = true
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[connection signal="pressed" from="Container/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Container/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Container/SaveGame" to="." method="_on_SaveGame_pressed"]
+[connection signal="pressed" from="Container/ExitMenu" to="." method="_on_ExitMenu_pressed"]
+[connection signal="pressed" from="Container/ExitDesktop" to="." method="_on_ExitDesktop_pressed"]
+[connection signal="popup_hide" from="SavegameNameInput" to="SavegameNameInput/VBoxContainer/LineEdit" method="clear"]
+[connection signal="text_changed" from="SavegameNameInput/VBoxContainer/LineEdit" to="." method="_on_Savegame_LineEdit_text_changed"]
+[connection signal="text_entered" from="SavegameNameInput/VBoxContainer/LineEdit" to="." method="_save_game"]
+[connection signal="pressed" from="SavegameNameInput/VBoxContainer/Button" to="." method="_on_Savegame_Button_pressed"]
+[connection signal="confirmed" from="OverrideSave" to="." method="_on_OverrideSave_confirmed"]
+[connection signal="quit" from="OptionsWindow/Control/OptionsMenu" to="." method="_on_OptionsMenu_quit"]

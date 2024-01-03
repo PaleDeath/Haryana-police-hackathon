@@ -1,0 +1,602 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://assets/defaults/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://client/menus/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://common/scenes/sound_button/sound_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/button_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://client/menus/options_menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/icons/loading/load7.png" type="Texture" id=7]
+[ext_resource path="res://assets/icons/loading/load5.png" type="Texture" id=8]
+[ext_resource path="res://assets/icons/cookie-grayscale.png" type="Texture" id=9]
+[ext_resource path="res://assets/music/menus/main menu.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/tux/tux.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/tux/ArmatureAction.anim" type="Animation" id=12]
+[ext_resource path="res://assets/tux/CylinderAction.anim" type="Animation" id=13]
+[ext_resource path="res://assets/textures/title/Title.png" type="Texture" id=14]
+[ext_resource path="res://assets/icons/loading/load2.png" type="Texture" id=15]
+[ext_resource path="res://assets/icons/off.png" type="Texture" id=16]
+[ext_resource path="res://assets/icons/loading/load3.png" type="Texture" id=17]
+[ext_resource path="res://assets/icons/loading/load14.png" type="Texture" id=18]
+[ext_resource path="res://assets/icons/loading/load10.png" type="Texture" id=19]
+[ext_resource path="res://assets/icons/loading/load8.png" type="Texture" id=20]
+[ext_resource path="res://assets/icons/loading/load13.png" type="Texture" id=21]
+[ext_resource path="res://assets/icons/loading/load0.png" type="Texture" id=22]
+[ext_resource path="res://assets/icons/loading/load6.png" type="Texture" id=23]
+[ext_resource path="res://assets/icons/loading/load1.png" type="Texture" id=24]
+[ext_resource path="res://assets/icons/loading/load9.png" type="Texture" id=25]
+[ext_resource path="res://assets/icons/loading/load15.png" type="Texture" id=26]
+[ext_resource path="res://assets/icons/loading/load11.png" type="Texture" id=27]
+[ext_resource path="res://assets/icons/loading/load4.png" type="Texture" id=28]
+[ext_resource path="res://assets/icons/loading/load12.png" type="Texture" id=29]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BoardSettings"
+length = 0.6
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LoadGameMenu/Title:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LoadGameMenu/Back:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -901, 397 ), Vector2( 0, 397 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LoadGameMenu/ScrollContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -913, 183 ), Vector2( 0, 183 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LoadGameMenu/Back:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 35.0001 ), Vector2( 512, 35.0001 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenu/Buttons:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -464, 412 ), Vector2( -464, 412 ), Vector2( 128, 412 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainMenu/TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, -248 ), Vector2( 128, -248 ), Vector2( 128, 152 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OptionsMenu/OptionsMenu:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1018, -133.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OptionsMenu/Title:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LoadGameMenu/Back:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -901, 397 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MainMenu/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.19, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "OptionsMenu"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("OptionsMenu/Title:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OptionsMenu/OptionsMenu:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1018, -133.5 ), Vector2( 0, -133.5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+step = 0.01
+
+[sub_resource type="InputEventAction" id=8]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="AnimatedTexture" id=12]
+flags = 4
+frames = 16
+fps = 24.0
+frame_0/texture = ExtResource( 26 )
+frame_1/texture = ExtResource( 18 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 21 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 29 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 27 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 19 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 25 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 20 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 7 )
+frame_8/delay_sec = 0.0
+frame_9/texture = ExtResource( 23 )
+frame_9/delay_sec = 0.0
+frame_10/texture = ExtResource( 8 )
+frame_10/delay_sec = 0.0
+frame_11/texture = ExtResource( 28 )
+frame_11/delay_sec = 0.0
+frame_12/texture = ExtResource( 17 )
+frame_12/delay_sec = 0.0
+frame_13/texture = ExtResource( 15 )
+frame_13/delay_sec = 0.0
+frame_14/texture = ExtResource( 24 )
+frame_14/delay_sec = 0.0
+frame_15/texture = ExtResource( 22 )
+frame_15/delay_sec = 0.0
+
+[node name="Menus" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "MainMenu"
+anims/BoardSettings = SubResource( 1 )
+anims/LoadGameMenu = SubResource( 2 )
+anims/MainMenu = SubResource( 3 )
+anims/OptionsMenu = SubResource( 4 )
+anims/SelectionBoard = SubResource( 5 )
+anims/SelectionChar = SubResource( 6 )
+anims/SelectionPlayers = SubResource( 7 )
+
+[node name="MainMenu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" parent="MainMenu" instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -49.9999
+margin_right = 46.0
+margin_bottom = -13.9999
+rect_min_size = Vector2( 40, 40 )
+icon = ExtResource( 16 )
+align = 0
+expand_icon = true
+
+[node name="Buttons" type="GridContainer" parent="MainMenu"]
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_top = 412.0
+margin_right = 633.0
+margin_bottom = -136.0
+rect_min_size = Vector2( 400, 100 )
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" parent="MainMenu/Buttons" instance=ExtResource( 4 )]
+margin_right = 259.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+text = "MENU_LABEL_NEW_GAME"
+clip_text = true
+
+[node name="Play2" parent="MainMenu/Buttons" instance=ExtResource( 4 )]
+margin_left = 263.0
+margin_right = 463.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+text = "MENU_LABEL_ONLINE"
+clip_text = true
+
+[node name="Load" parent="MainMenu/Buttons" instance=ExtResource( 4 )]
+margin_top = 44.0
+margin_right = 259.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 200, 40 )
+text = "MENU_IO_LOAD_GAME"
+
+[node name="Options" parent="MainMenu/Buttons" instance=ExtResource( 4 )]
+margin_left = 263.0
+margin_top = 44.0
+margin_right = 463.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 200, 40 )
+text = "MENU_OPTIONS"
+
+[node name="Screenshots" parent="MainMenu/Buttons" instance=ExtResource( 4 )]
+margin_top = 88.0
+margin_right = 259.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 200, 40 )
+text = "MENU_LABEL_SCREENSHOTS"
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+anchor_bottom = 1.0
+margin_left = 128.0
+margin_top = 152.0
+margin_right = 1152.0
+margin_bottom = 72.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="MainMenu"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -562.0
+margin_top = 104.0
+margin_right = -50.0
+margin_bottom = -104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="MainMenu/ViewportContainer"]
+size = Vector2( 512, 512 )
+transparent_bg = true
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="MainMenu/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.892 )
+keep_aspect = 0
+fov = 23.4
+
+[node name="tux" parent="MainMenu/ViewportContainer/Viewport" instance=ExtResource( 11 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/ViewportContainer/Viewport/tux"]
+autoplay = "ArmatureAction"
+anims/ArmatureAction = ExtResource( 12 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="MainMenu/ViewportContainer/Viewport/tux"]
+autoplay = "CylinderAction"
+anims/CylinderAction = ExtResource( 13 )
+
+[node name="OmniLight" type="OmniLight" parent="MainMenu/ViewportContainer/Viewport/tux"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13843, 1.50051, 2.54785 )
+light_energy = 6.75
+omni_range = 8.5
+
+[node name="ServerList" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ServerList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ServerList/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_LABEL_CHOOSE_SERVER"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ServerList/VBoxContainer"]
+margin_right = 1240.0
+margin_bottom = 645.0
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="ServerList/VBoxContainer/ScrollContainer"]
+margin_right = 1240.0
+size_flags_horizontal = 3
+
+[node name="Footer" type="HBoxContainer" parent="ServerList/VBoxContainer"]
+margin_top = 649.0
+margin_right = 1240.0
+margin_bottom = 680.0
+
+[node name="Leave" type="Button" parent="ServerList/VBoxContainer/Footer"]
+margin_right = 180.0
+margin_bottom = 31.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 9 )
+text = "MENU_LABEL_BACK"
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="OptionsMenu"]
+anchor_right = 1.0
+margin_top = 100.0
+margin_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_OPTIONS"
+align = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsMenu" parent="OptionsMenu" instance=ExtResource( 6 )]
+margin_left = -1018.0
+margin_top = -133.5
+margin_right = -1018.0
+margin_bottom = 133.5
+
+[node name="LoadGameMenu" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -216.0
+margin_right = 256.0
+margin_bottom = 216.0
+
+[node name="Title" type="Label" parent="LoadGameMenu"]
+anchor_right = 1.0
+margin_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "MENU_IO_LOAD_GAME"
+align = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadGameMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -913.0
+margin_top = 183.0
+margin_right = -898.0
+margin_bottom = -49.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Saves" type="VBoxContainer" parent="LoadGameMenu/ScrollContainer"]
+margin_right = 512.0
+rect_min_size = Vector2( 512, 0 )
+
+[node name="Back" parent="LoadGameMenu" instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -901.0
+margin_top = -35.0
+margin_right = -901.0
+margin_bottom = 9.15527e-05
+custom_fonts/font = ExtResource( 5 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 11 )
+text = "MENU_LABEL_BACK"
+custom_click = "res://assets/sounds/ui/click2.wav"
+
+[node name="LoadAnimation" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="LoadAnimation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="TextureRect" type="TextureRect" parent="LoadAnimation"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="LoadAnimation"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 90.0
+margin_right = 100.0
+margin_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MENU_LABEL_CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 0.184314, 0.729412, 0.85098, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Music"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+margin_right = 144.0
+margin_bottom = 84.0
+
+[connection signal="pressed" from="MainMenu/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Play2" to="." method="_on_Play2_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Screenshots" to="." method="_on_Screenshots_pressed"]
+[connection signal="animation_finished" from="MainMenu/ViewportContainer/Viewport/tux/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="ServerList/VBoxContainer/Footer/Leave" to="." method="_on_ServerList_Leave_pressed"]
+[connection signal="quit" from="OptionsMenu/OptionsMenu" to="." method="_on_OptionsMenu_quit"]
+[connection signal="pressed" from="LoadGameMenu/Back" to="." method="_on_LoadGame_Back_pressed"]
+[connection signal="pressed" from="LoadAnimation/Cancel" to="." method="_on_connection_failed"]
